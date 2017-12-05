@@ -39,3 +39,13 @@ function checkPhoneAndImages() {
 		return false;
 	}
 }
+
+function check_pass() {
+	var pass1 = document.getElementById("password");
+	var pass2 = document.getElementById("repassword");
+	if (pass1 == pass2) {
+	}else{
+		alert("Comfirm password");
+        return false;
+	}
+}

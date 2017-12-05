@@ -72,7 +72,7 @@
 			</select> </br> </br> <input id="submit" type="submit" value="Insert">
 		</fieldset>
 	</form>
-	<script type="text/javascript" src="js/validate.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/js/validate.js"></script>
 	<center>
 		</br/> <a href="insert">Show All Employee</a>
 	</center>

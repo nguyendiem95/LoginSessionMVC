@@ -48,8 +48,11 @@ public class ServletRegister extends HttpServlet {
     User user = new User(userName, pass);
     String msg = null;
     RequestDispatcher rDispatcher = null;
-    if (pass.equals(rePass)) {
-      try {
+    try {
+      if (new UserDAO().getUser(userName)) {
+        msg = "User is exist";
+        rDispatcher = request.getRequestDispatcher("/jsp/user_registration.jsp");
+      } else {
         if (new UserDAO().insertUser(user)) {
           msg = "Creat account success!";
           rDispatcher = request.getRequestDispatcher("/jsp/user_login.jsp");
@@ -57,16 +60,13 @@ public class ServletRegister extends HttpServlet {
           msg = "Creat account no success!";
           rDispatcher = request.getRequestDispatcher("/jsp/user_registration.jsp");
         }
-      } catch (ClassNotFoundException e) {
-        // TODO Auto-generated catch block
-        e.printStackTrace();
-      } catch (SQLException e) {
-        // TODO Auto-generated catch block
-        e.printStackTrace();
       }
-    } else {
-      msg = "Comfirm repassword";
-      rDispatcher = request.getRequestDispatcher("/jsp/user_registration.jsp");
+    } catch (ClassNotFoundException e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    } catch (SQLException e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
     }
     request.setAttribute("msg", msg);
     rDispatcher.forward(request, response);

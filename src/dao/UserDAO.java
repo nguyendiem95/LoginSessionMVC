@@ -10,6 +10,7 @@ import java.sql.SQLException;
 
 import javax.servlet.ServletException;
 
+import model.Employee;
 import model.User;
 
 /**
@@ -64,5 +65,21 @@ public class UserDAO {
       connect.close();
     }
     return true;
+  }
+  
+  public boolean getUser(String userName) throws ClassNotFoundException, SQLException {
+    Connection connect = util.ConnectDB.Connect();
+    String sql = "SELECT * FROM Account" + " WHERE username = " + "'" + userName + "'";
+    PreparedStatement ps = null;
+    try {
+      ps = connect.prepareStatement(sql);
+      ResultSet rs = ps.executeQuery();
+      while (rs.next()) {
+        return true;
+      }
+    } catch (SQLException e) {
+      e.printStackTrace();
+    }
+    return false;
   }
 }

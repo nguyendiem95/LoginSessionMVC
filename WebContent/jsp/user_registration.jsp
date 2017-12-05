@@ -6,8 +6,6 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>User Register</title>
-<link rel="stylesheet" type="text/css"
-	href="${pageContext.request.contextPath}/CSS/styleUserRegister.css">
 </head>
 <body>
 	<div class="dWRAP">
@@ -20,18 +18,18 @@
 		<div class="dFORM">
 			<form name="user_registration"
 				action="${pageContext.request.contextPath}/ServletRegister"
-				method="post" onsubmit="return userValidate();">
+				method="post" onsubmit="return check_pass();">
 				<div class="dValue2">
 					<input type="text" name="user_name" class="iStyleInit"
 						placeholder="User name">
 				</div>
 				<div class="dValue2">
-					<input type="password" name="password" class="iStyleInit"
-						placeholder="Password">
+					<input type="password" name="password" id="password"
+						class="iStyleInit" placeholder="Password">
 				</div>
 				<div class="dValue2">
-					<input type="password" name="repassword" class="iStyleInit"
-						placeholder="Re-Password">
+					<input type="password" name="repassword" id="repassword"
+						class="iStyleInit" placeholder="Re-Password">
 				</div>
 				<div>
 					<input type="submit" value="Register" class="bRegister">
@@ -43,5 +41,15 @@
 			</form>
 		</div>
 	</div>
+	<script type="text/javascript">
+		function check_pass() {
+			var pass1 = document.getElementById("password").value;
+			var pass2 = document.getElementById("repassword").value;
+			if (pass1 != pass2) {
+				alert("Comfirm password");
+				return false;
+			}
+		}
+	</script>
 </body>
 </html>
