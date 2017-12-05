@@ -23,19 +23,24 @@ import javax.servlet.http.HttpSession;
  * @Year:2017
  * @Description
  */
-public class AppFilter implements Filter{
+public class AppFilter implements Filter {
 
-  /* (non-Javadoc)
+  /*
+   * (non-Javadoc)
+   * 
    * @see javax.servlet.Filter#destroy()
    */
   @Override
   public void destroy() {
     // TODO Auto-generated method stub
-    
+
   }
 
-  /* (non-Javadoc)
-   * @see javax.servlet.Filter#doFilter(javax.servlet.ServletRequest, javax.servlet.ServletResponse, javax.servlet.FilterChain)
+  /*
+   * (non-Javadoc)
+   * 
+   * @see javax.servlet.Filter#doFilter(javax.servlet.ServletRequest,
+   * javax.servlet.ServletResponse, javax.servlet.FilterChain)
    */
   @Override
   public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
@@ -51,31 +56,37 @@ public class AppFilter implements Filter{
     HashMap<String, String> emailSession = (HashMap<String, String>) session.getAttribute("account");
 
     if ((email == null) && (password == null)) {
-        if (emailSession == null) {
-            rDispatcher = request
-                    .getRequestDispatcher("/jsp/user_login.jsp");
-            rDispatcher.forward(request, response);
+      if (emailSession == null) {
+        if (status == null) {
+          rDispatcher = request.getRequestDispatcher("/jsp/user_login.jsp");
+          rDispatcher.forward(request, response);
         } else {
-            String id = request.getParameter("id");
-            if ("1".equals(id)) {
-                request.setAttribute("order_date", "2017-05-01");
-                System.out.println(request.getAttribute("order_date"));
-            }
-            chain.doFilter(request, response);
+          rDispatcher = request.getRequestDispatcher("/jsp/user_registration.jsp");
+          rDispatcher.forward(request, response);
         }
-    } else {
+      } else {
+        String id = request.getParameter("id");
+        if ("1".equals(id)) {
+          request.setAttribute("order_date", "2017-05-01");
+          System.out.println(request.getAttribute("order_date"));
+        }
         chain.doFilter(request, response);
+      }
+    } else {
+      chain.doFilter(request, response);
     }
-    
+
   }
 
-  /* (non-Javadoc)
+  /*
+   * (non-Javadoc)
+   * 
    * @see javax.servlet.Filter#init(javax.servlet.FilterConfig)
    */
   @Override
   public void init(FilterConfig arg0) throws ServletException {
     // TODO Auto-generated method stub
-    
+
   }
 
 }

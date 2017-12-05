@@ -11,8 +11,10 @@
 #borderimg {
 	border: 10px solid transparent;
 	padding: 15px;
-	-webkit-border-image: url("img/border.PNG") 20% round;
-	border-image: url(img/border.PNG) 20% round;
+	-webkit-border-image:
+		url(../img/border.PNG) 20% round;
+	border-image:
+		url(../img/border.PNG) 20% round;
 }
 </style>
 </head>
@@ -48,7 +50,8 @@
 	<div id="logo">
 		<p id="borderimg"></p>
 		<div id="img">
-			<img name="globe" src="${pageContext.request.contextPath}/img/cmcLogo.PNG"
+			<img name="globe"
+				src="${pageContext.request.contextPath}/img/cmcLogo.PNG"
 				onMouseOver="swap('${pageContext.request.contextPath}/img/cmcglobal2.png');"
 				onMouseOut="swap('${pageContext.request.contextPath}/img/cmcLogo.PNG');" />
 		</div>
@@ -58,7 +61,8 @@
 		<div id="text_olumn">
 			<div id="column">
 				<h3>Lorem ipsum dolor sit amet</h3>
-				<img align="left" src="${pageContext.request.contextPath}/img/cmcLogo.PNG" />
+				<img align="left"
+					src="${pageContext.request.contextPath}/img/cmcLogo.PNG" />
 				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 					Donec maximus eros sit amet laoreet venenatis. Vestibulum in
 					maximus arcu. Donec hendrerit vel ex at dictum. Curabitur lobortis,
@@ -67,7 +71,8 @@
 			</div>
 			<div id="column">
 				<h3>Lorem ipsum dolor sit amet</h3>
-				<img align="left" src="${pageContext.request.contextPath}/img/cmcLogo.PNG" />
+				<img align="left"
+					src="${pageContext.request.contextPath}/img/cmcLogo.PNG" />
 				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 					Donec maximus eros sit amet laoreet venenatis. Vestibulum in
 					maximus arcu. Donec hendrerit vel ex at dictum. Curabitur lobortis,
@@ -76,7 +81,8 @@
 			</div>
 			<div id="column">
 				<h3>Lorem ipsum dolor sit amet</h3>
-				<img align="left" src="${pageContext.request.contextPath}/img/cmcLogo.PNG" />
+				<img align="left"
+					src="${pageContext.request.contextPath}/img/cmcLogo.PNG" />
 				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 					Donec maximus eros sit amet laoreet venenatis. Vestibulum in
 					maximus arcu. Donec hendrerit vel ex at dictum. Curabitur lobortis,

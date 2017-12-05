@@ -63,6 +63,8 @@ public class ServletLogin extends HttpServlet {
         rDispatcher = request.getRequestDispatcher("/jsp/index.jsp");
         rDispatcher.forward(request, response);
       } else {
+        String msg = "Login fail";
+        request.setAttribute("msg", msg);
         rDispatcher = request.getRequestDispatcher("/jsp/user_login.jsp");
         rDispatcher.forward(request, response);
       }

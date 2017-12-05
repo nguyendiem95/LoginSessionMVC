@@ -49,9 +49,20 @@ public class UserDAO {
     }
   }
 
-  public static void main(String[] args) throws ClassNotFoundException, SQLException, ServletException {
-    User u = new User("1", "1");
-    String a = new UserDAO().checkLogin(u);
-    System.out.println(a);
+  public boolean insertUser(User user) throws ClassNotFoundException, SQLException {
+    Connection connect = util.ConnectDB.Connect();
+    String sql = "Insert into Account Values(?,?)";
+    PreparedStatement prepare = connect.prepareStatement(sql);
+    prepare.setString(1, user.getUserName());
+    prepare.setString(2, user.getPassWord());
+    try {
+      prepare.executeUpdate();
+    } catch (Exception e) {
+      e.printStackTrace();
+      return false;
+    } finally {
+      connect.close();
+    }
+    return true;
   }
 }
